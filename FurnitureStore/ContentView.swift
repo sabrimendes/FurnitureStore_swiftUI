@@ -10,7 +10,40 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        TabView()
+    }
+}
+
+struct TabView: View {
+    @State var index = 0
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer()
+            HStack {
+                Button(action: {
+                    
+                }) {
+                    HStack(spacing: 6) {
+                        Image("home")
+                            .foregroundColor(self.index == 0 ? .white : .primary)
+                        
+                        if self.index == 0{
+                            
+                            Text("Home")
+                                .foregroundColor(.white)
+                        }
+                    }.padding(.vertical,10)
+                    .padding(.horizontal)
+                    .background(self.index == 0 ? Color("Color") : Color.clear)
+                    .clipShape(Capsule())
+                    
+                    Spacer(minLength: 0)
+
+
+                }
+            }
+        }
     }
 }
 
