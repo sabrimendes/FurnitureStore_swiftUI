@@ -10,8 +10,8 @@
 An iOS e-commerce app made using SwiftUI. Features Dark mode and a custom tab bar.
 
 ## Screenshots
-![HomePage!](screenshots/Screenshot-1.png)
-![DarkMode!](screenshots/Screenshot-2.png)
+![Home Page!](screenshots/Screenshot-1.png)
+![Dark Mode with Scroll!](screenshots/Screenshot-2.png)
 
 
 ## To Run
