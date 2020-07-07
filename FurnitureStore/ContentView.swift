@@ -9,6 +9,15 @@
 
 import SwiftUI
 
+struct Furniture : Identifiable,Hashable{
+    
+    var id : Int
+    var image : String
+    var title : String
+    var price : String
+}
+
+
 struct ContentView: View {
     var body: some View {
         TabView()
@@ -157,9 +166,7 @@ struct TabView : View {
             }
             .padding(.horizontal,25)
             .padding(.top)
-            // based on device bottom padding will be changed...
             .padding(.bottom,UIApplication.shared.windows.first?.safeAreaInsets.bottom == 0 ? 10 : UIApplication.shared.windows.first?.safeAreaInsets.bottom)
-            // for shadow...
             .background(self.scheme == .dark ? Color.black : Color.white)
             .shadow(color: Color.primary.opacity(0.08), radius: 5, x: 5, y: -5)
         }
@@ -220,7 +227,7 @@ struct Home : View {
                         
                     }) {
                         
-                        Image("menu")
+                        Image(systemName:"line.horizontal.3")
                             .resizable()
                             .frame(width: 24, height: 24)
                             .foregroundColor(.primary)
@@ -240,7 +247,6 @@ struct Home : View {
                     
                     Button(action: {
                         
-                        // changing user interface style...
                         
                         UIApplication.shared.windows.first?.rootViewController?.overrideUserInterfaceStyle = self.scheme == .dark ? .light : .dark
                         
@@ -299,10 +305,10 @@ struct Home : View {
                         
                         Image("main")
                         .resizable()
-                        .frame(width: 24, height: 24)
+                        .frame(width: 250, height: 275)
 
                         
-                        Text("ArmChair")
+                        Text("Sofa Set")
                             
                             .fontWeight(.bold)
                             .font(.title)
@@ -317,7 +323,7 @@ struct Home : View {
                         Color.primary.opacity(0.06)
                             .frame(width: UIScreen.main.bounds.width - 30)
                             .cornerRadius(25)
-                            .padding(.top,95)
+                            .padding(.top,10)
                     )
                     .padding(.top,25)
                     
@@ -332,6 +338,32 @@ struct Home : View {
                     .padding(.top,30)
                     .padding(.bottom, 20)
                     
+                    ForEach(furnitures,id: \.self){furniture in
+                        
+                        HStack(spacing: 15){
+                            
+                            ForEach(furniture){i in
+                                
+                                VStack{
+                                    
+                                    Image(i.image)
+                                        .resizable()
+                                        .frame(width: 75, height: 100)
+
+                                    
+                                    Text(i.title)
+                                        .fontWeight(.bold)
+                                    
+                                    Text(i.price)
+                                        .padding(.top, 6)
+                                }
+                                .padding()
+                                .frame(width: UIScreen.main.bounds.width/2 - 30)
+                                .background(Color.primary.opacity(0.06))
+                                .cornerRadius(10)
+                            }
+                        }
+                    }
                     
                 }
                 .padding()
@@ -348,4 +380,22 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+var furnitures = [
+    [
+    Furniture(id: 0, image: "r11", title: "Grey Chair", price: "$1200"),
+    Furniture(id: 1, image: "r12", title: "Red Chair", price: "$600")
+    ],
+    
+    [
+    Furniture(id: 2, image: "r21", title: "Dining Table", price: "$1240"),
+    Furniture(id: 3, image: "r22", title: "Blue Chair", price: "$1500")
+    ],
+    
+    [
+    Furniture(id: 4, image: "r31", title: "Queen Bed", price: "$2200"),
+    Furniture(id: 5, image: "r32", title: "Green Sofa", price: "$1650")
+    ]
+]
 
