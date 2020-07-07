@@ -258,7 +258,7 @@ struct Home : View {
                     }
                 }
                 
-                Text("Furnitures")
+                Text("Furniture Store")
                     .font(.title)
                     .fontWeight(.bold)
             }
